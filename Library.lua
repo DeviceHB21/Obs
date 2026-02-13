@@ -166,6 +166,11 @@ end,
     ActiveTab = nil,
     Tabs = {},
     TabButtons = {},
+    -- після того як local Tab = { ... } вже існує
+Tab.ActiveBG = ActiveBG,
+
+Library.Tabs = Library.Tabs or {}
+table.insert(Library.Tabs, Tab),
     DependencyBoxes = {},
 
     KeybindFrame = nil,
@@ -6457,8 +6462,6 @@ function Library:CreateWindow(WindowInfo)
                 Parent = TabButton,
             })
 
-Library.Tabs = Library.Tabs or {}
-
 local function SetTabActive(TargetTab)
     for _, T in Library.Tabs do
         if T.ActiveBG then
@@ -6480,8 +6483,6 @@ end
 Library.Rounded(ActiveBG, 6)
 ActiveBG.ZIndex = TabButton.ZIndex - 1
 
-Tab.ActiveBG = ActiveBG
-
 TabButton.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1
         or input.UserInputType == Enum.UserInputType.Touch then
@@ -6493,8 +6494,6 @@ TabButton.InputBegan:Connect(function(input)
         end
     end
 end)
-
-table.insert(Library.Tabs, Tab)
 
             TabLabel = New("TextLabel", {
                 BackgroundTransparency = 1,
