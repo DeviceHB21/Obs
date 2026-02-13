@@ -6480,7 +6480,7 @@ end
     Library.Rounded(ActiveBG, 6)
 ActiveBG.ZIndex = TabButton.ZIndex - 1
 
-ActiveBG.BackgroundColor3 = "BackgroundColor"   -- щоб було видно різницю
+ActiveBG.BackgroundColor3 = Library.Scheme.BackgroundColor   -- щоб було видно різницю
 ActiveBG.BackgroundTransparency = 0.05          -- майже суцільний
 TabButton.ClipsDescendants = false
 
