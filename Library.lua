@@ -6484,11 +6484,7 @@ TabButton.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1
         or input.UserInputType == Enum.UserInputType.Touch then
 
-        SetTabActive(Tab) -- показати rounded фон тільки на цьому табі
-
-        if Tab.Show then
-            Tab:Show() -- або Tab.Show(Tab)
-        end
+        SetTabActive(Tab)
     end
 end)
 
