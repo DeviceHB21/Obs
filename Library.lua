@@ -6479,14 +6479,6 @@ end
 
     Library.Rounded(ActiveBG, 6)
 ActiveBG.ZIndex = TabButton.ZIndex - 1
-    
-TabButton.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1
-        or input.UserInputType == Enum.UserInputType.Touch then
-
-        SetTabActive(Tab)
-    end
-end)
 
             TabLabel = New("TextLabel", {
                 BackgroundTransparency = 1,
@@ -7029,14 +7021,16 @@ table.insert(Library.Tabs, Tab)
         Tabbox.ActiveTab:Hide()
     end
 
-    -- ACTIVE TAB BACKGROUND
-    if Library.Tabs then
-        for _, T in Library.Tabs do
-            if T.ActiveBG then
-                T.ActiveBG.Visible = (T == self)
-            end
-        end
+   -- rounded active tab background
+for _, T in pairs(Tabbox.Tabs) do
+    if T.ActiveBG then
+        T.ActiveBG.Visible = false
     end
+end
+
+if self.ActiveBG then
+    self.ActiveBG.Visible = true
+end
 
                     Button.BackgroundTransparency = 1
                     Button.TextTransparency = 0
@@ -7049,6 +7043,9 @@ table.insert(Library.Tabs, Tab)
                 end
 
                 function Tab:Hide()
+if self.ActiveBG then
+    self.ActiveBG.Visible = false
+end
                     Button.BackgroundTransparency = 0
                     Button.TextTransparency = 0.5
                     Line.Visible = true
