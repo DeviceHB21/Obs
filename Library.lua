@@ -2682,12 +2682,13 @@ Holder.ClipsDescendants = true
         ColorMenu.List.Padding = UDim.new(0, 8)
         ColorPicker.ColorMenu = ColorMenu
 
-          task.defer(function()
+          coroutine.wrap(function()
     if ColorMenu and ColorMenu.Menu then
-        Rounded(ColorMenu.Menu, 6)
+        Library.Rounded(ColorMenu.Menu, 6)
         ColorMenu.Menu.ClipsDescendants = true
     end
-end)
+end)()
+
 
         New("UIPadding", {
             PaddingBottom = UDim.new(0, 6),
