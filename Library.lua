@@ -144,12 +144,14 @@ do
 end
 
 local Library = {
-  Rounded = function(obj, px)
-    local ui = Instance.new("UICorner")
-    ui.CornerRadius = UDim.new(0, px or 4)
-    ui.Parent = obj
-    return ui
-end,
+    CornerRadius = 4,
+
+    Rounded = function(obj, px)
+        local ui = Instance.new("UICorner")
+        ui.CornerRadius = UDim.new(0, px or Library.CornerRadius)
+        ui.Parent = obj
+        return ui
+    end,
 
     LocalPlayer = LocalPlayer,
     DevicePlatform = nil,
@@ -166,11 +168,6 @@ end,
     ActiveTab = nil,
     Tabs = {},
     TabButtons = {},
-    -- після того як local Tab = { ... } вже існує
-Tab.ActiveBG = ActiveBG,
-
-Library.Tabs = Library.Tabs or {}
-table.insert(Library.Tabs, Tab),
     DependencyBoxes = {},
 
     KeybindFrame = nil,
@@ -6480,9 +6477,16 @@ end
     Parent = TabButton,
 })
 
-Library.Rounded(ActiveBG, 6)
+    Library.Rounded(ActiveBG, 6)
 ActiveBG.ZIndex = TabButton.ZIndex - 1
 
+-- 4) прив’язав
+Tab.ActiveBG = ActiveBG
+
+-- 5) додав у список табів (якщо ще нема реєстру)
+Library.Tabs = Library.Tabs or {}
+table.insert(Library.Tabs, Tab)
+    
 TabButton.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1
         or input.UserInputType == Enum.UserInputType.Touch then
