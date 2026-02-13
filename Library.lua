@@ -2655,7 +2655,7 @@ do
             Parent = ToggleLabel,
         })
 
-          Rounded(Holder, 4)
+          Library.Rounded(Holder, 4)
 Holder.ClipsDescendants = true
 
           
@@ -2725,7 +2725,7 @@ end)
             Parent = ColorHolder,
         })
 
-          Rounded(SatVipMap, 4)
+          Library.Rounded(SatVipMap, 4)
 SatVipMap.ClipsDescendants = true
 
         local SatVibCursor = New("Frame", {
@@ -2750,7 +2750,7 @@ SatVipMap.ClipsDescendants = true
             Parent = ColorHolder,
         })
 
-        Rounded(HueSelector, 4)
+        Library.Rounded(HueSelector, 4)
 HueSelector.ClipsDescendants = true
 
           
@@ -2781,7 +2781,7 @@ HueSelector.ClipsDescendants = true
                 Parent = ColorHolder,
             })
 
-            Rounded(TransparencySelector, 4)
+            Library.Rounded(TransparencySelector, 4)
 TransparencySelector.ClipsDescendants = true
 
             TransparencyColor = New("Frame", {
@@ -2832,7 +2832,7 @@ TransparencySelector.ClipsDescendants = true
             Parent = InfoHolder,
         })
 
-          Rounded(HueBox, 2)
+          Library.Rounded(HueBox, 2)
 
         local RgbBox = New("TextBox", {
             BackgroundColor3 = "MainColor",
@@ -2845,7 +2845,7 @@ TransparencySelector.ClipsDescendants = true
             Parent = InfoHolder,
         })
 
-          Rounded(RgbBox, 2)
+          Library.Rounded(RgbBox, 2)
 
         --// Context Menu \\--
         local ContextMenu = Library:AddContextMenu(Holder, UDim2.fromOffset(93, 0), function()
@@ -2854,7 +2854,7 @@ TransparencySelector.ClipsDescendants = true
         ColorPicker.ContextMenu = ContextMenu
           task.defer(function()
     if ContextMenu and ContextMenu.Menu then
-        Rounded(ContextMenu.Menu, 4)
+        Library.Rounded(ContextMenu.Menu, 4)
         ContextMenu.Menu.ClipsDescendants = true
     end
 end)
@@ -4193,7 +4193,7 @@ Library.Rounded(Base, 4)
             Parent = Holder,
         })
 
-Rounded(Bar, 4)
+Library.Rounded(Bar, 4)
 Bar.ClipsDescendants = true
 
         local DisplayLabel = New("TextLabel", {
@@ -4217,7 +4217,7 @@ Bar.ClipsDescendants = true
             Parent = Bar,
         })
 
-Rounded(Fill, 3)
+Library.Rounded(Fill, 3)
 
         function Slider:UpdateColors()
             if Library.Unloaded then
@@ -4461,7 +4461,7 @@ Rounded(Fill, 3)
             Parent = Holder,
         })
 
-Rounded(Display, 4)
+Library.Rounded(Display, 4)
 Display.ClipsDescendants = true
 
         New("UIPadding", {
@@ -4523,7 +4523,7 @@ Display.ClipsDescendants = true
 
 task.defer(function()
     if MenuTable and MenuTable.Menu then
-        Rounded(MenuTable.Menu, 4)
+        Library.Rounded(MenuTable.Menu, 4)
         MenuTable.Menu.ClipsDescendants = true
     end
 end)
@@ -4627,7 +4627,7 @@ end)
                     Parent = MenuTable.Menu,
                 })
 
-                Rounded(Button, 4)
+                Library.Rounded(Button, 4)
   
                 New("UIPadding", {
                     PaddingLeft = UDim.new(0, 7),
