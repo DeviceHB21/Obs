@@ -6479,13 +6479,6 @@ end
 
     Library.Rounded(ActiveBG, 6)
 ActiveBG.ZIndex = TabButton.ZIndex - 1
-
--- 4) прив’язав
-Tab.ActiveBG = ActiveBG
-
--- 5) додав у список табів (якщо ще нема реєстру)
-Library.Tabs = Library.Tabs or {}
-table.insert(Library.Tabs, Tab)
     
 TabButton.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1
@@ -7029,6 +7022,11 @@ end)
                     Elements = {},
                     DependencyBoxes = {},
                 }
+
+        Tab.ActiveBG = ActiveBG
+
+Library.Tabs = Library.Tabs or {}
+table.insert(Library.Tabs, Tab)
 
                 function Tab:Show()
     if Tabbox.ActiveTab then
