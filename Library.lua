@@ -6457,6 +6457,45 @@ function Library:CreateWindow(WindowInfo)
                 Parent = TabButton,
             })
 
+Library.Tabs = Library.Tabs or {}
+
+local function SetTabActive(TargetTab)
+    for _, T in Library.Tabs do
+        if T.ActiveBG then
+            T.ActiveBG.Visible = (T == TargetTab)
+        end
+    end
+end
+
+        local ActiveBG = New("Frame", {
+    BackgroundColor3 = "MainColor",
+    BackgroundTransparency = 0.15,
+    BorderSizePixel = 0,
+    Position = UDim2.fromOffset(6, 2),
+    Size = UDim2.new(1, -12, 1, -4),
+    Visible = false,
+    Parent = TabButton,
+})
+
+Library.Rounded(ActiveBG, 6)
+ActiveBG.ZIndex = TabButton.ZIndex - 1
+
+Tab.ActiveBG = ActiveBG
+
+TabButton.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch then
+
+        SetTabActive(Tab) -- показати rounded фон тільки на цьому табі
+
+        if Tab.Show then
+            Tab:Show() -- або Tab.Show(Tab)
+        end
+    end
+end)
+
+table.insert(Library.Tabs, Tab)
+
             TabLabel = New("TextLabel", {
                 BackgroundTransparency = 1,
                 Position = UDim2.fromOffset(30, 0),
@@ -6989,9 +7028,18 @@ function Library:CreateWindow(WindowInfo)
                 }
 
                 function Tab:Show()
-                    if Tabbox.ActiveTab then
-                        Tabbox.ActiveTab:Hide()
-                    end
+    if Tabbox.ActiveTab then
+        Tabbox.ActiveTab:Hide()
+    end
+
+    -- ACTIVE TAB BACKGROUND
+    if Library.Tabs then
+        for _, T in Library.Tabs do
+            if T.ActiveBG then
+                T.ActiveBG.Visible = (T == self)
+            end
+        end
+    end
 
                     Button.BackgroundTransparency = 1
                     Button.TextTransparency = 0
