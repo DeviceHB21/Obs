@@ -144,11 +144,13 @@ do
 end
 
 local Library = {
-  local function Rounded(obj, px)
+  Rounded = function(obj, px)
     local ui = Instance.new("UICorner")
     ui.CornerRadius = UDim.new(0, px or 4)
     ui.Parent = obj
-end
+    return ui
+end,
+
     LocalPlayer = LocalPlayer,
     DevicePlatform = nil,
     IsMobile = false,
@@ -3335,7 +3337,7 @@ do
                 Parent = Base,
             })
 
-            Rounded(Base, 4)
+Library.Rounded(Base, 4)
             
             return Base, Stroke
         end
