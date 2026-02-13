@@ -6480,6 +6480,10 @@ end
     Library.Rounded(ActiveBG, 6)
 ActiveBG.ZIndex = TabButton.ZIndex - 1
 
+ActiveBG.BackgroundColor3 = "BackgroundColor"   -- щоб було видно різницю
+ActiveBG.BackgroundTransparency = 0.05          -- майже суцільний
+TabButton.ClipsDescendants = false
+
             TabLabel = New("TextLabel", {
                 BackgroundTransparency = 1,
                 Position = UDim2.fromOffset(30, 0),
@@ -6491,6 +6495,8 @@ ActiveBG.ZIndex = TabButton.ZIndex - 1
                 Visible = not IsCompact,
                 Parent = TabButton,
             })
+
+TabLabel.ZIndex = TabButton.ZIndex + 1
 
             if Icon then
                 TabIcon = New("ImageLabel", {
@@ -6505,6 +6511,8 @@ ActiveBG.ZIndex = TabButton.ZIndex - 1
                     Parent = TabButton,
                 })
             end
+
+TabIcon.ZIndex = TabButton.ZIndex + 1
 
             table.insert(Library.TabButtons, {
                 Label = TabLabel,
@@ -7031,6 +7039,8 @@ end
 if self.ActiveBG then
     self.ActiveBG.Visible = true
 end
+
+        print("ACTIVE TAB:", self.Name, self.ActiveBG and self.ActiveBG.Visible)
 
                     Button.BackgroundTransparency = 1
                     Button.TextTransparency = 0
